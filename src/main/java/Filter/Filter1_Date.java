@@ -3,6 +3,7 @@ package Filter;
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
+import javax.swing.*;
 import java.io.IOException;
 import java.util.Calendar;
 import java.util.Date;
@@ -25,7 +26,8 @@ public class Filter1_Date implements Filter {
         String path=request.getRequestURI();
         //获取一个Calendar的实例
         Calendar cal = Calendar.getInstance();
-        //获取当前时间，.MONTH从0开始
+        //获取当前时间，.MONTH从0开
+        servletResponse.setContentType("text/html;charset=UTF-8");
        String time= cal.get(Calendar.YEAR)+"年"+(cal.get(Calendar.MONTH) + 1)+
                "月"+cal.get(Calendar.DATE)+"日"+cal.get(Calendar.HOUR_OF_DAY)+": "+cal.get(Calendar.MINUTE);
         //输出当前时间
