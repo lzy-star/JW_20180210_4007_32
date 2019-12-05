@@ -12,6 +12,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Collection;
@@ -39,6 +40,7 @@ public class SchoolController extends HttpServlet {
             throws ServletException, IOException {
         //设置请求字符编码为UTF-8
         request.setCharacterEncoding("UTF-8");
+
         //根据request对象，获得代表参数的JSON字串
         String school_json = JsonUtil.getJson(request);
 
@@ -51,6 +53,7 @@ public class SchoolController extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         //创建JSON对象message，以便往前端响应信息
         JSONObject message = new JSONObject();
+
         //在数据库表中增加School对象
         try {
             SchoolService.getInstance().add(schoolToAdd);
